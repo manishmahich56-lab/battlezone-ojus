@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BATTLEZONE — Mini Battle Royale</title>
+  <link rel="stylesheet" href="css/ui.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       START SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="start-screen">
+    <div class="start-inner">
+      <div class="logo">BATTLE<span>ZONE</span></div>
+      <p class="tagline">Last one standing wins</p>
+      <div class="stat-row">
+        <div class="stat-box"><span id="best-kills">0</span><small>BEST KILLS</small></div>
+        <div class="stat-box"><span id="best-time">0s</span><small>LONGEST RUN</small></div>
+      </div>
+      <button id="play-btn">DROP IN</button>
+      <div class="controls-grid">
+        <div>WASD</div><div>Move</div>
+        <div>MOUSE</div><div>Look / Aim</div>
+        <div>LEFT CLICK</div><div>Shoot</div>
+        <div>SPACE</div><div>Jump</div>
+        <div>R</div><div>Reload</div>
+        <div>SHIFT</div><div>Sprint</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       GAME OVER SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="gameover-screen">
+    <div class="go-inner">
+      <div id="go-title">YOU DIED</div>
+      <div id="go-stats"></div>
+      <button id="retry-btn">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HUD (shown during gameplay)
+  ══════════════════════════════════════════ -->
+  <div id="hud">
+    <!-- Top-left: kills + alive -->
+    <div id="hud-tl">
+      <div class="hud-item">
+        <span class="hud-label">KILLS</span>
+        <span id="kill-count" class="hud-val">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">ALIVE</span>
+        <span id="alive-count" class="hud-val">10</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">TIME</span>
+        <span id="time-display" class="hud-val">0s</span>
+      </div>
+    </div>
+
+    <!-- Top-right: zone warning -->
+    <div id="zone-warn"></div>
+
+    <!-- Centre: crosshair -->
+    <div id="crosshair">
+      <div class="ch-h"></div>
+      <div class="ch-v"></div>
+    </div>
+
+    <!-- Hit marker (flash on damage dealt) -->
+    <div id="hit-marker"></div>
+
+    <!-- Bottom-left: health -->
+    <div id="hud-health">
+      <div class="bar-label">HP</div>
+      <div id="health-bar-bg">
+        <div id="health-bar"></div>
+      </div>
+      <span id="health-num">100</span>
+    </div>
+
+    <!-- Bottom-right: ammo + zone -->
+    <div id="hud-br">
+      <div id="ammo-display">
+        <span id="ammo-cur">30</span>
+        <span class="ammo-sep">/</span>
+        <span id="ammo-res">90</span>
+      </div>
+      <div id="reload-msg" class="hidden">RELOADING…</div>
+      <div id="zone-bar-wrap">
+        <div class="bar-label">ZONE</div>
+        <div id="zone-bar-bg"><div id="zone-bar"></div></div>
+      </div>
+    </div>
+
+    <!-- Zone damage flash -->
+    <div id="zone-overlay"></div>
+
+    <!-- Damage vignette -->
+    <div id="damage-vignette"></div>
+  </div>
+
+  <!-- THREE.JS (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Game modules (load order matters) -->
+  <script src="js/config.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/enemy.js"></script>
+  <script src="js/shooting.js"></script>
+  <script src="js/zone.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
